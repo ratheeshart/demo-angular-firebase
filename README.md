@@ -1,5 +1,6 @@
 # demo-angular-firebase
 An Learning APP using Angular 5 and Google Firebase.
+# Configure Firebase project to .firebaserc file.
 
 # Angular APP Setup. (Thanks to Angular CLI).
 
