@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   logout() {
-    this.af.auth.signOut().then(() => {
+    return this.af.auth.signOut().then(() => {
       this.isLoggedIn = false;
       this.toastr.success('Completed', 'Logout Success.');
     });

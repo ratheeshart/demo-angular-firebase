@@ -2,10 +2,20 @@
   <app-menubar>Loading...</app-menubar>
   <div class="clear-fix"></div>
   <div class="container">
-  <span class="alert alert-success">
-      This is a demo Web Learning Application developed using Angular 5 and Firebase Realtime DB.
-      Login using Google and Goto <a routerLink='/tutorials'>Tutorial Page</a>.
-  </span>
+    <div class="col-12 flex-column border-bottom">
+      <span class="col-2 font-xx text-primary">
+        <span data-fa-symbol="fa-clipboard " class="fas fa-clipboard " aria-hidden="true">
+        </span>
+        <svg class="icon">
+          <use xlink:href="#fa-clipboard "></use>
+        </svg>
+      </span>
+      <span class="col-8 text text-success">
+        This is a demo Web Learning Application developed using Angular 5 and Firebase Realtime DB.
+        Login using Google and Goto <a routerLink='/tutorials'>Tutorial Page</a>.
+      </span>
+    </div>
+    <div class="clear-fix"></div>
     <router-outlet></router-outlet>
   </div>
 </div>

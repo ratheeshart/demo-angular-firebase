@@ -8,8 +8,9 @@ const routes: Routes = [{path: 'tutorials', component: TutorialComponent , canAc
 // children: [{ path: 'tutorial/:key', component: CoursesComponent , outlet: ''}]
 },
 { path: 'tutorial/:key', component: CoursesComponent , canActivate: [AuthGuard]},
-{ path: '', component: AppComponent , pathMatch: 'full'},
-{ path: '**', redirectTo: '/', pathMatch: 'full' }];
+// { path: '', component: AppComponent },
+{ path: '**', redirectTo: '/', pathMatch: 'full' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

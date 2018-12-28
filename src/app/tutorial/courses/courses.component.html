@@ -2,31 +2,35 @@
   <div class="card-header">
     <div class="card-title">
       <span class="float-left col-10">
-    <a routerLink='/tutorials' class="btn btn-default btn-xs">
-        <span
-        data-fa-symbol="fa-backward"
-        class="fas fa-backward"
-        aria-hidden="true"></span>
-      <svg class="icon">
-        <use xlink:href="#fa-backward"></use>
-      </svg>
-    </a>
+        <a routerLink='/tutorials' class="btn btn-default btn-xs">
+          <span data-fa-symbol="fa-backward" class="fas fa-backward" aria-hidden="true"></span>
+          <svg class="icon">
+            <use xlink:href="#fa-backward"></use>
+          </svg>
+        </a>
         <h2>{{tutorial.name}}</h2>
         <h4>{{tutorial.description}}</h4>
-
       </span>
       <span class="float-right">
         <span *ngIf='tutorial.completed; else Learning'>
-          Completed.
+          <span data-fa-symbol="fa-award " class="fas fa-award text-success" title="Completed." aria-hidden="true">
+          </span>
+          <svg class="icon">
+            <use xlink:href="#fa-award "></use>
+          </svg>
         </span>
         <ng-template #Learning>
-          Working
+          <span data-fa-symbol="fa-laptop-code " class="fas fa-laptop-code text-secondary" title="Learning" aria-hidden="true">
+          </span>
+          <svg class="icon">
+            <use xlink:href="#fa-laptop-code "></use>
+          </svg> 
         </ng-template>
       </span>
     </div>
   </div>
   <div class="card-body">
-    <table class="table table-borderless table-light table-condensed">
+    <table class="table table-borderless table-light table-condensed text-center">
       <thead>
         <th *ngFor='let v of col'>
           {{v}}
@@ -38,7 +42,7 @@
             {{data.name}}
           </td>
           <td>
-            <a href='https://www.google.com?q={{tutorial.description}}' target="_blank">
+            <a href='https://www.google.com/search?q={{tutorial.name}}+{{data.name}}' target="_blank">
               Course Contents
             </a>
           </td>

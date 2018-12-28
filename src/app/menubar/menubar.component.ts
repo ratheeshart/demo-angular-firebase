@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../core/auth.service';
+import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-menubar',
@@ -10,7 +11,7 @@ export class MenubarComponent implements OnInit {
   isNavbarCollapsed = true;
   title = 'Demo Application';
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private route: Router) {}
 
   ngOnInit() {}
 
@@ -20,6 +21,6 @@ export class MenubarComponent implements OnInit {
   }
 
   logout() {
-    this.auth.logout();
+    this.auth.logout().finally(() => this.route.navigate(['/']));
   }
 }

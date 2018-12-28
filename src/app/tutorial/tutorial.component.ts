@@ -46,7 +46,7 @@ export class TutorialComponent implements OnInit {
   ngOnInit() {
     console.log('Constructing');
     this.getAllTutorials();
-    this.tutorialCol = ['Name', 'Description', 'Completed'];
+    this.tutorialCol = ['Name', 'Description', 'Completed', ''];
     this.tutorialfrom = new FormGroup({
       name: new FormControl(this.form.name, Validators.required),
       description: new FormControl(this.form.description, Validators.required),

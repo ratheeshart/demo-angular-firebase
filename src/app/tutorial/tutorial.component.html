@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="card-body">
-    <table class="table table-condensed">
+    <table class="table table-condensed text-center">
       <thead>
         <tr>
           <td *ngFor="let col of tutorialCol">{{ col }}</td>
@@ -32,7 +32,11 @@
               [ngModelOptions]="{standalone: true}"
             /> -->
             <span *ngIf='tutorial.completed; else Learning'>
-              Completed
+              <span data-fa-symbol="fa-award " class="fas fa-award text-success" title="Completed" aria-hidden="true">
+              </span>
+              <svg class="icon">
+                <use xlink:href="#fa-award "></use>
+              </svg> 
             </span>
           </td>
           <td>
@@ -52,7 +56,11 @@
   </div>
 </div>
 <ng-template #Learning>
-  Learning
+  <span data-fa-symbol="fa-laptop-code " class="fas fa-laptop-code text-secondary" title="Learning" aria-hidden="true">
+  </span>
+  <svg class="icon">
+    <use xlink:href="#fa-laptop-code "></use>
+  </svg> 
 </ng-template>
 <ng-template #createPopup let-d="dismiss" let-c="close" data-backdrop='static'>
   <div class="modal-header">
@@ -62,7 +70,7 @@
     </button>
 
   </div>
-  <div class="modal-body">{{ from}}
+  <div class="modal-body">
     <form name="tutorialData" [formGroup]='tutorialfrom' (ngSubmit)="Save(tutorialfrom,$event)" novalidate>
       <div class="form-group">
         <label for="name">Name</label>
