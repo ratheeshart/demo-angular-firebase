@@ -4,7 +4,7 @@ An Learning APP using Angular 5 and Google Firebase.
 
 # Angular APP Setup. (Thanks to Angular CLI).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3 and the App using 5.1.1.
 
 ## Development server
 
