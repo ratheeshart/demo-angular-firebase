@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "~bootstrap/dist/css/bootstrap.css" */
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -.125em;
+}
+.nav-item,.navbar-brand{
+    color: lightgrey;
+}
+.nav-item:hover, .nav-item:focus{
+    color: white;
+}
+.nav-item a:active{
+    color: white;
+}

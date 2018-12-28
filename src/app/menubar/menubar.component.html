@@ -1,0 +1,60 @@
+<nav
+  class="navbar navbar-expand-md navbar-expand-lg navbar-dark fixed-top bg-primary text-secondary">
+  <a class="navbar-brand" href="#"><img [alt]="title" src="./assets/logo.png" width="24px"> {{title}}</a>
+  <!-- Toggler/collapsibe Button -->
+  <button
+    class="navbar-toggler"
+    (click)="isNavbarCollapsed=!isNavbarCollapsed"
+    type="button"
+    data-toggle="collapse"
+    data-target="#collapsibleNavbar">
+    <span class="text-white" *ngIf="auth.isLoggedIn">Greetings, {{ auth.authState.displayName }}</span>
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav justify-content-center">
+      <li class="nav nav-item" *ngIf="!auth.isLoggedIn">
+        <a (click)="loginWithGoogle()" class=" nav-link active">Login</a>
+      </li>
+      <li class="nav nav-item">
+        <a
+          routerLink="/tutorials"
+          class=" nav-link"
+          *ngIf="auth.isLoggedIn"
+          >Tutorials</a>
+      </li>
+      <li class="nav nav-item">
+        <a
+          (click)="logout()"
+          class=" nav-link"
+          *ngIf="auth.isLoggedIn">Logout</a>
+      </li>
+      <!--
+        <li class="nav nav-item pull-right">
+          <button class="navbar-toggler hidden-sm-up nav-link" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
+            data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown" ngbDropdown>
+                <a class="nav-link dropdown-toggle" id="id01" href="#" ngbDropdownToggle>Files</a>
+                <div class="dropdown-menu" aria-labelledby="id01" ngbDropdownMenu>
+                  <a class="dropdown-item" href="#">HTML</a>
+                  <a class="dropdown-item" href="#">TS</a>
+                  <a class="dropdown-item" href="#">JS</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+      -->
+    </ul>
+    <ul class="navbar-nav justify-content-end navbar-inverse" *ngIf="isNavbarCollapsed">
+      <li class="nav-divider"></li>
+      <li *ngIf="auth.isLoggedIn" class="nav-item text-light">
+        <span class="usergreet">Greetings, {{ auth.authState.displayName }}</span>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,127 @@
+<div class="card card-primary">
+  <div class="card-header bg-light ">
+    <div class="card-title flex-row flex-nowrap">
+      <span class=" float-left">{{ title }}</span>
+      <span class="justify-items-end float-right btn btn-default">
+        <span data-fa-symbol="fa-plus-circle" class="fas fa-plus-circle" aria-hidden="true">
+        </span>
+        <svg class="icon" (click)="showCreatePopup(createPopup)">
+          <use xlink:href="#fa-plus-circle"></use>
+        </svg>
+      </span>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <td *ngFor="let col of tutorialCol">{{ col }}</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tutorial of tutorials;let n = index;">
+          <td> <a routerLink='/tutorial/{{tutorial.key}}'>{{ tutorial.name }}</a></td>
+          <td>{{ tutorial.description }}</td>
+          <td>
+            <!-- <input
+              type="checkbox"
+              class="checkbox-inline"
+              title="Completed"
+              [(ngModel)]="tutorial.completed"
+              (change)='UpdateCompleted(tutorial, tutorial.key)'
+              [ngModelOptions]="{standalone: true}"
+            /> -->
+            <span *ngIf='tutorial.completed; else Learning'>
+              Completed
+            </span>
+          </td>
+          <td>
+            <span data-fa-symbol="fa-trash" class="fas fa-trash" aria-hidden="true">
+            </span>
+            <svg class="icon" (click)="clean(tutorial.key)">
+              <use xlink:href="#fa-trash"></use>
+            </svg>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer pull-right">
+    <!-- <button class="btn btn-default" (click)='clean()'>Clean</button> -->
+    <!-- <button class="btn btn-default" (click)='getAllTutorials()'>Load Data</button> -->
+  </div>
+</div>
+<ng-template #Learning>
+  Learning
+</ng-template>
+<ng-template #createPopup let-d="dismiss" let-c="close" data-backdrop='static'>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New {{ title }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+  </div>
+  <div class="modal-body">{{ from}}
+    <form name="tutorialData" [formGroup]='tutorialfrom' (ngSubmit)="Save(tutorialfrom,$event)" novalidate>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <div class="input-group">
+          <input id="tutorial_name" class="form-control" placeholder="Name" formControlName="name" name="name"
+            ngAutoFocus />
+          <!-- tutorialName<div class="input-group-append"> #tutorialfrom="ngForm"
+                [(ngModel)]="form.name"
+              required
+              formControlName="name"
+              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"> </button>
+              [(ngModel)]="form.description"
+            </div> -->
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea maxlength="140" class="form-control" placeholder="Description" name="description" formControlName="description"
+          required>
+        </textarea>
+      </div>
+      <div class="form-group">
+        <div>
+          <label for="coursecontent">Course Contents </label>
+          <span class="float-right">
+            <span data-fa-symbol="fa-plus-circle" class="fas fa-plus-circle" aria-hidden="true">
+            </span>
+            <svg class="icon" (click)="addCourse(tutorialfrom.get('data'))">
+              <!-- form.data -->
+              <use xlink:href="#fa-plus-circle"></use>
+            </svg>
+          </span>
+        </div>
+        <div>
+          <span formArrayName='data' class="coursecontent clearfix form-group" *ngFor="let data of tutorialfrom.controls.data.controls; let n = index">
+            <!-- *ngFor="let data of form.data; let n = index" -->
+            <div [formGroupName]='n' class="col-8 float-left">
+              <!--  [(ngModel)]="data.name" -->
+              <input class="form-control" formControlName="name" required />
+            </div>
+            <span class="float-right" *ngIf='n>0'>
+              <span data-fa-symbol="fa-trash" class="fas fa-trash" aria-hidden="true">
+              </span>
+              <svg class="icon" (click)="removeCourse(tutorialfrom.controls.data.controls,n)">
+                <!-- form.data -->
+                <use xlink:href="#fa-trash"></use>
+              </svg>
+            </span>
+          </span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-outline-dark float-right" (click)="Save(tutorialfrom, $event)">
+        Save
+      </button>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <!-- <button type="submit" class="btn btn-outline-dark" (click)="Save(tutorialfrom)">
+      Save
+    </button> -->
+  </div>
+</ng-template>
