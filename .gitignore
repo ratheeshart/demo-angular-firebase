@@ -10,7 +10,7 @@
 /public
 yarn.lock
 y
-/functions
+# /functions
 local_env
 # profiling files
 chrome-profiler-events.json

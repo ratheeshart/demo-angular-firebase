@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "fbhost": "npm run build && firebase deploy -p .\\dist\\demoangularfirebase --only hosting"
+    "fbhost": "npm run build && firebase deploy -p .\\dist\\demoangularfirebase --only hosting",
+    "fbfunc": "firebase deploy -p .\\dist\\demoangularfirebase --only functions"
   },
   "private": true,
   "author": {
